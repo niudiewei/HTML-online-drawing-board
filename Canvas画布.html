@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas画板</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <header id="header">HTML在线画板</header>
+    <section id="content">
+        <!-- 工具区域 -->
+        <ul id="tool">
+            <li id="border-red">
+                <h3>图像</h3>
+                <hr>
+                <ul id="image">
+                    <li>
+                        <button>保存图片</button>
+                    </li>
+                    <li>
+                        <button>清除画板</button>
+                    </li>
+                </ul>
+            </li>
+            <li id="border-red">
+                <h3>工具</h3>
+                <hr>
+                <ul id="means">
+                    <li>
+                        <img src="./images/Brush.png" alt="工具">
+                    </li>
+                    <li>
+                        <img src="./images/Eraser.png" alt="橡皮檫">
+                    </li>
+                    <li>
+                        <img src="./images/Paint.png" alt="颜色填充">
+                    </li>
+                    <li>
+                        <img src="./images/Straw.png" alt="颜色选取">
+                    </li>
+                    <li>
+                        <img src="./images/text.png" alt="文字">
+                    </li>
+                    <li>
+                        <img src="./images/Magnifier.png" alt="放大镜">
+                    </li>
+                </ul>
+            </li>
+            <li id="border-red">
+                <h3>形状</h3>
+                <hr>
+                <ul id="means">
+                    <li>
+                        <img src="./images/line.png" alt="工具">
+                    </li>
+                    <li>
+                        <img src="./images/arc.png" alt="橡皮檫">
+                    </li>
+                    <li>
+                        <img src="./images/rect.png" alt="颜色填充">
+                    </li>
+                    <li>
+                        <img src="./images/poly.png" alt="颜色选取">
+                    </li>
+                    <li>
+                        <img src="./images/arcfill.png" alt="文字">
+                    </li>
+                    <li>
+                        <img src="./images/rectfill.png" alt="放大镜">
+                    </li>
+                </ul>
+            </li>
+            <li id="border-red">
+                <h3>线宽</h3>
+                <hr>
+                <ul id="size">
+                    <li>
+                        <img src="./images/line1px.png">
+                    </li>
+                    <li>
+                        <img src="./images/line3px.png">
+                    </li>
+                    <li>
+                        <img src="./images/line5px.png">
+                    </li>
+                    <li>
+                        <img src="./images/line8px.png">
+                    </li>
+                </ul>
+            </li>
+            <li class="last-border-right">
+                <h3>颜色</h3>
+                <hr>
+                <ul id="color">
+                    <li id="red"></li>
+                    <li id="green"></li>
+                    <li id="blue"></li>
+                    <li id="yellow"></li>
+                    <li id="white"></li>
+                    <li id="black"></li>
+                    <li id="pink"></li>
+                    <li id="purple"></li>
+                    <li id="cyan"></li>
+                    <li id="orange"></li>
+                </ul>
+            </li>
+        </ul>
+        <!-- 绘图区域 -->
+        <canvas id="canvas" width="880" height="400">您的浏览器不支持canvas标签，升级浏览器吧！</canvas>
+    </section>
+    <footer id="footer">
+        <small>开源精神，任意分享 @ 安职院 牛叠为</small>
+    </footer>
+</body>
+
+</html>

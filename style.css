@@ -1,0 +1,157 @@
+/* 公共区域 */
+
+* {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    /* border: 0; */
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: aqua;
+}
+
+/* 顶部样式 */
+
+#header {
+    width: 900px;
+    height: 80px;
+    margin: 0 auto;
+    font-size: 40px;
+    text-align: center;
+    line-height: 80px;
+}
+
+/* 中间部分 */
+
+#content {
+    width: 880px;
+    height: 550px;
+    background: gray;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+#canvas {
+    background: white;
+}
+
+#tool {
+    height: 150px;
+    text-align: center;
+}
+
+#tool li {
+    width: 175px;
+    height: 140px;
+    float: left;
+    
+    background: #ccc;
+}
+#border-red{
+    border-right: 1px solid red;
+}
+
+#image li {
+    padding: 15px 0 0 25px;
+    width: 100px;
+    height: 30px;
+    list-style: square inside;
+    border: 0;
+}
+
+#image li button {
+    background: gray;
+    border: 1px solid #fff;
+}
+
+#means {
+    padding: 10px;
+    height: 80px;
+}
+
+#means li {
+    height: 20px;
+    width: 48.6px;
+    margin-top: 14px;
+    border: 1px solid gray;
+    border-right: none;
+}
+
+#means li:nth-child(3n + 0) {
+    border: 1px solid gray;
+}
+
+#means img {
+    width: 20px;
+    height: 20px;
+}
+
+#size li {
+    padding: 7px 0 0 0;
+    height: 15px;
+}
+
+#color {
+    padding: 24px 0 0 10px;
+}
+
+#color li {
+    width: 22px;
+    height: 22px;
+    border: 1px solid #000;
+    margin: 3px;
+}
+
+#color #red {
+    background: red
+}
+
+#color #green {
+    background: green
+}
+
+#color #blue {
+    background: blue
+}
+
+#color #yellow {
+    background: yellow
+}
+
+#color #white {
+    background: white
+}
+
+#color #black {
+    background: black
+}
+
+#color #pink {
+    background: pink
+}
+
+#color #purple {
+    background: purple
+}
+
+#color #cyan {
+    background: cyan
+}
+
+#color #orange {
+    background: orange
+}
+
+/* 底部 */
+
+#footer {
+    width: 900px;
+    text-align: center;
+    margin: 0 auto;
+}
