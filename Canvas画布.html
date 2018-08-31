@@ -17,10 +17,10 @@
                 <hr>
                 <ul id="image">
                     <li>
-                        <button>保存图片</button>
+                        <button id="saveimg">保存图片</button>
                     </li>
                     <li>
-                        <button>清除画板</button>
+                        <button id="claerimg">清除画板</button>
                     </li>
                 </ul>
             </li>
@@ -28,22 +28,22 @@
                 <h3>工具</h3>
                 <hr>
                 <ul id="means">
-                    <li>
+                    <li id="means_brush" onclick="drawBrush(0)">
                         <img src="./images/Brush.png" alt="工具">
                     </li>
-                    <li>
+                    <li id="means_eraser" onclick="drawEraser(1)">
                         <img src="./images/Eraser.png" alt="橡皮檫">
                     </li>
-                    <li>
+                    <li id="means_paint" onclick="drawPaint(2)">
                         <img src="./images/Paint.png" alt="颜色填充">
                     </li>
-                    <li>
+                    <li id="means_straw" onclick="drawStrw(3)">
                         <img src="./images/Straw.png" alt="颜色选取">
                     </li>
-                    <li>
+                    <li id="means_text" onclick="drawText(4)">
                         <img src="./images/text.png" alt="文字">
                     </li>
-                    <li>
+                    <li id="means_magnifier" onclick="drawMagnigier(5)">
                         <img src="./images/Magnifier.png" alt="放大镜">
                     </li>
                 </ul>
@@ -52,22 +52,22 @@
                 <h3>形状</h3>
                 <hr>
                 <ul id="means">
-                    <li>
+                    <li id="means_line" onclick="drawLine(6)">
                         <img src="./images/line.png" alt="工具">
                     </li>
-                    <li>
+                    <li id="means_arc" onclick="drawArc(7)">
                         <img src="./images/arc.png" alt="橡皮檫">
                     </li>
-                    <li>
+                    <li id="means_rect" onclick="drawRect(8)">
                         <img src="./images/rect.png" alt="颜色填充">
                     </li>
-                    <li>
+                    <li id="means_poly" onclick="drawPoly(9)">
                         <img src="./images/poly.png" alt="颜色选取">
                     </li>
-                    <li>
+                    <li id="means_arcfill" onclick="drawArcfill(10)">
                         <img src="./images/arcfill.png" alt="文字">
                     </li>
-                    <li>
+                    <li id="means_reactfill" onclick="drawReactfill(11)">
                         <img src="./images/rectfill.png" alt="放大镜">
                     </li>
                 </ul>
@@ -76,16 +76,16 @@
                 <h3>线宽</h3>
                 <hr>
                 <ul id="size">
-                    <li>
+                    <li id="width_1" onclick="setLineWith(0)">
                         <img src="./images/line1px.png">
                     </li>
-                    <li>
+                    <li id="width_3" onclick="setLineWith(1)">
                         <img src="./images/line3px.png">
                     </li>
-                    <li>
+                    <li id="width_5" onclick="setLineWith(2)">
                         <img src="./images/line5px.png">
                     </li>
-                    <li>
+                    <li id="width_8" onclick="setLineWith(3)">
                         <img src="./images/line8px.png">
                     </li>
                 </ul>
@@ -94,21 +94,22 @@
                 <h3>颜色</h3>
                 <hr>
                 <ul id="color">
-                    <li id="red"></li>
-                    <li id="green"></li>
-                    <li id="blue"></li>
-                    <li id="yellow"></li>
-                    <li id="white"></li>
-                    <li id="black"></li>
-                    <li id="pink"></li>
-                    <li id="purple"></li>
-                    <li id="cyan"></li>
-                    <li id="orange"></li>
+                    <li id="red" onclick="setColor(0)"></li>
+                    <li id="green" onclick="setColor(1)"></li>
+                    <li id="blue" onclick="setColor(2)"></li>
+                    <li id="yellow" onclick="setColor(3)"></li>
+                    <li id="white" onclick="setColor(4)"></li>
+                    <li id="black" onclick="setColor(5)"></li>
+                    <li id="pink" onclick="setColor(6)"></li>
+                    <li id="purple" onclick="setColor(7)"></li>
+                    <li id="cyan" onclick="setColor(8)"></li>
+                    <li id="orange" onclick="setColor(9)"></li>
                 </ul>
             </li>
         </ul>
         <!-- 绘图区域 -->
         <canvas id="canvas" width="880" height="400">您的浏览器不支持canvas标签，升级浏览器吧！</canvas>
+        <script src="./canvas.js"></script>
     </section>
     <footer id="footer">
         <small>开源精神，任意分享 @ 安职院 牛叠为</small>

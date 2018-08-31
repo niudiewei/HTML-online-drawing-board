@@ -1,5 +1,4 @@
 /* 公共区域 */
-
 * {
     padding: 0;
     margin: 0;
@@ -13,11 +12,11 @@ body {
 }
 
 body {
+    font-family: 'Microsoft YaHei';
     background: aqua;
 }
 
 /* 顶部样式 */
-
 #header {
     width: 900px;
     height: 80px;
@@ -28,7 +27,6 @@ body {
 }
 
 /* 中间部分 */
-
 #content {
     width: 880px;
     height: 550px;
@@ -50,10 +48,10 @@ body {
     width: 175px;
     height: 140px;
     float: left;
-    
     background: #ccc;
 }
-#border-red{
+
+#border-red {
     border-right: 1px solid red;
 }
 
@@ -67,7 +65,12 @@ body {
 
 #image li button {
     background: gray;
+    border: 1px solid #000;
+}
+
+#image li button:hover {
     border: 1px solid #fff;
+    cursor: pointer;
 }
 
 #means {
@@ -83,8 +86,18 @@ body {
     border-right: none;
 }
 
+#means li:hover {
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
 #means li:nth-child(3n + 0) {
     border: 1px solid gray;
+}
+
+#means li:nth-child(3n + 0):hover {
+    border: 1px solid #fff;
+    cursor: pointer;
 }
 
 #means img {
@@ -93,8 +106,20 @@ body {
 }
 
 #size li {
-    padding: 7px 0 0 0;
-    height: 15px;
+    margin: 7px auto 0;
+    height: 13px;
+    width: 100px;
+    border: 1px solid #ccc;
+    float: none;
+}
+#size li img{
+    margin: 3px 0 0 0;
+    display: block;
+}
+
+#size li:hover {
+    border: 1px solid #fff;
+    cursor: pointer;
 }
 
 #color {
@@ -106,6 +131,11 @@ body {
     height: 22px;
     border: 1px solid #000;
     margin: 3px;
+}
+
+#color li:hover {
+    border: 1px solid #fff;
+    cursor: pointer;
 }
 
 #color #red {
@@ -149,7 +179,6 @@ body {
 }
 
 /* 底部 */
-
 #footer {
     width: 900px;
     text-align: center;
