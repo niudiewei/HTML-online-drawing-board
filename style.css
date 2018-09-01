@@ -105,6 +105,9 @@ body {
     height: 20px;
 }
 
+#size {
+    margin: 14px 0 0 0;
+}
 #size li {
     margin: 7px auto 0;
     height: 13px;

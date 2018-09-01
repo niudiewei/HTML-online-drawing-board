@@ -1,7 +1,9 @@
 function $(id) {
     return document.getElementById(id);
 }
-
+//绘图部分获取
+var canvas = $("canvas");
+var cxt = canvas.getContext("2d");
 //获取工具按钮
 var Brush = $("means_brush");
 var Eraser = $("means_eraser");
@@ -36,6 +38,11 @@ var ColorOrange = $("orange");
 var actions = [Brush, Eraser, Paint, Straw, Texter, Magnifier, Line, Arc, Rect, Poly, Arcfill, Reactfill];
 var width = [line_1, line_3, line_5, line_8];
 var colors = [ColorRed, ColorGreen, ColorBlue, ColorYellow, ColorWhite, ColorBlack, ColorPink, ColorPurple, ColorCyan, ColorOrange]
+//设置初始选定按钮、线宽、颜色
+drawBrush(0);
+setLineWith(0);
+setColor(ColorRed,0);
+
 //状态设置函数
 function setStatus(Arr, num, type) {
     for (var i = 0; i < Arr.length; i++) {
@@ -58,6 +65,30 @@ function setStatus(Arr, num, type) {
 //工具和形状按钮点击绑定
 function drawBrush(num) {
     setStatus(actions, num, 1);
+    var flag = 0;
+    canvas.onmousedown = function (e) {
+        e = window.e || e;
+        var startX = e.pageX - this.offsetLeft;
+        var startY = e.pageY - this.offsetTop;
+        cxt.beginPath();
+        cxt.moveTo(startX, startY);
+        flag = 1;
+
+    }
+    //鼠标移动的时候
+    canvas.onmousemove = function (e) {
+        e = window.e || e;
+        var endX = e.pageX - this.offsetLeft;
+        var endY = e.pageY - this.offsetTop;
+        if (flag) {
+            cxt.lineTo(endX, endY);
+            cxt.stroke();
+        }
+    }
+    //鼠标抬起结束绘图
+    canvas, onmouseup = function () {
+        flag = 0;
+    }
 }
 
 function drawEraser(num) {
@@ -106,9 +137,27 @@ function drawReactfill(num) {
 //线宽按钮绑定
 function setLineWith(num) {
     setStatus(width, num, 1);
+    switch (num) {
+        case 0:
+            cxt.lineWidth = 1;
+            break
+        case 1:
+            cxt.lineWidth = 3;
+            break;
+        case 2:
+            cxt.lineWidth = 5;
+            break;
+        case 3:
+            cxt.lineWidth = 8;
+            break;
+        default:
+            cxt.lineWidth = 1;
+    }
 }
 //颜色按钮绑定
-function setColor(num) {
+function setColor(obj,num) {
     // alert(num);
     setStatus(colors, num, 0);
+    cxt.strokeStyle = obj.id;
+    cxt.fillStyle = obj.id;
 };

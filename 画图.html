@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>画图设置</title>
+</head>
+
+<body style="display:flex;justify-content: center;flex-direction: column;align-items: center;">
+    <canvas style="border:1px solid red;" width="500px" height="500px"></canvas>
+    <button style="border:1px solid rgba(78,214,208,1);width: 100px;height: 32px;">清除</button>
+</body>
+<script>
+    var canvas = document.querySelector("canvas");
+    var btn = document.querySelector("button");
+    btn.addEventListener("click", function () {
+        cxt.clearRect(0, 0, 500, 500);
+    }, false)
+    var cxt = canvas.getContext("2d");
+    //鼠标按下设置开始点
+    var flag = 0;
+    canvas.onmousedown = function (e) {
+        e = window.e || e;
+        var startX = e.pageX - this.offsetLeft;
+        var startY = e.pageY - this.offsetTop;
+        cxt.beginPath();
+        cxt.moveTo(startX, startY);
+        flag = 1;
+
+    }
+    //鼠标移动的时候
+    canvas.onmousemove = function (e) {
+        e = window.e || e;
+        var endX = e.pageX - this.offsetLeft;
+        var endY = e.pageY - this.offsetTop;
+        if (flag) {
+            cxt.lineTo(endX, endY);
+            cxt.stroke();
+        }
+    }
+    //鼠标抬起结束绘图
+    canvas, onmouseup = function () {
+        flag = 0;
+    }
+</script>
+
+</html>
