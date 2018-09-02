@@ -1,6 +1,9 @@
 function $(id) {
     return document.getElementById(id);
 }
+//获取图像栏按钮
+var Saveimg = $("saveimg");
+var Clearimg = $("clearimg");
 //绘图部分获取
 var canvas = $("canvas");
 var cxt = canvas.getContext("2d");
@@ -41,7 +44,7 @@ var colors = [ColorRed, ColorGreen, ColorBlue, ColorYellow, ColorWhite, ColorBla
 //设置初始选定按钮、线宽、颜色
 drawBrush(0);
 setLineWith(0);
-setColor(ColorRed,0);
+setColor(ColorRed, 0);
 
 //状态设置函数
 function setStatus(Arr, num, type) {
@@ -86,7 +89,11 @@ function drawBrush(num) {
         }
     }
     //鼠标抬起结束绘图
-    canvas, onmouseup = function () {
+    canvas.onmouseup = function () {
+        flag = 0;
+    }
+    // 鼠标移出画布时取消画图操作
+    canvas.onmouseout = function () {
         flag = 0;
     }
 }
@@ -113,26 +120,137 @@ function drawMagnigier(num) {
 
 function drawLine(num) {
     setStatus(actions, num, 1);
+    canvas.onmousedown = function (e) {
+        e = window.e || e;
+        var startX = e.pageX - this.offsetLeft;
+        var startY = e.pageY - this.offsetTop;
+        cxt.beginPath();
+        cxt.moveTo(startX, startY);
+    }
+    //注销其它事件
+    canvas.onmousemove = null;
+    canvas.onmouseout = null;
+    canvas.onmouseup = function (e) {
+        e = window.e || e;
+        var endX = e.pageX - this.offsetLeft;
+        var endY = e.pageY - this.offsetTop;
+        cxt.lineTo(endX, endY);
+        cxt.closePath();
+        cxt.stroke();
+    }
 }
 
 function drawArc(num) {
     setStatus(actions, num, 1);
+    canvas.onmousedown = function (e) {
+        e = window.e || e;
+        arcX = e.pageX - this.offsetLeft;
+        arcY = e.pageY - this.offsetTop;
+    }
+    canvas.onmouseup = function (e) {
+        e = window.e || e;
+        var endX = e.pageX - this.offsetLeft;
+        var endY = e.pageY - this.offsetTop;
+        let c = Math.sqrt((endX - arcX) * (endX - arcX) + (endY - arcY) * (endY - arcY)) / 2;
+        cxt.beginPath();
+        cxt.arc((arcX + (endX - arcX) / 2), (arcY + (endY - arcY) / 2), c, 0, 2 * Math.PI, false);
+        cxt.closePath();
+        cxt.stroke();
+    }
+
+    canvas.onmousemove = null;
+    canvas.onmouseout = null;
 }
 
 function drawRect(num) {
     setStatus(actions, num, 1);
+    canvas.onmousedown = function (e) {
+        e = window.e || e;
+        rectX = e.pageX - this.offsetLeft;
+        rectY = e.pageY - this.offsetTop;
+    }
+    canvas.onmouseup = function (e) {
+        e = window.e || e;
+        var endX = e.pageX - this.offsetLeft;
+        var endY = e.pageY - this.offsetTop;
+        //参数为负无影响
+        let a = endX - rectX;
+        let b = endY - rectY;
+        cxt.beginPath();
+        cxt.rect(rectX, rectY, a, b, endX, endY);
+        cxt.closePath();
+        cxt.stroke();
+    }
+    cxt.onmouseout = null;
+    cxt.onmousemove = null;
 }
 
 function drawPoly(num) {
     setStatus(actions, num, 1);
+    canvas.onmousedown = function (e) {
+        e = window.e || e;
+        polyX = e.pageX - this.offsetLeft;
+        polyY = e.pageY - this.offsetTop;
+    }
+    canvas.onmouseup = function (e) {
+        e = window.e || e;
+        var endX = e.pageX - this.offsetLeft;
+        var endY = e.pageY - this.offsetTop;
+        cxt.beginPath();
+        cxt.moveTo(polyX, endY);
+        cxt.lineTo(endX, endY);
+        cxt.lineTo(polyX + ((endX - polyX) / 2), polyY);
+        cxt.lineTo(polyX, endY);
+        cxt.closePath();
+        cxt.stroke();
+    }
+    canvas.onmouseout = null;
+    canvas.onmousemove = null;
 }
 
 function drawArcfill(num) {
     setStatus(actions, num, 1);
+    canvas.onmousedown = function (e) {
+        e = window.e || e;
+        arcX = e.pageX - this.offsetLeft;
+        arcY = e.pageY - this.offsetTop;
+    }
+    canvas.onmouseup = function (e) {
+        e = window.e || e;
+        var endX = e.pageX - this.offsetLeft;
+        var endY = e.pageY - this.offsetTop;
+        let c = Math.sqrt((endX - arcX) * (endX - arcX) + (endY - arcY) * (endY - arcY)) / 2;
+        cxt.beginPath();
+        cxt.arc((arcX + (endX - arcX) / 2), (arcY + (endY - arcY) / 2), c, 0, 2 * Math.PI, false);
+        cxt.closePath();
+        cxt.fill();
+    }
+
+    canvas.onmousemove = null;
+    canvas.onmouseout = null;
 }
 
 function drawReactfill(num) {
     setStatus(actions, num, 1);
+    setStatus(actions, num, 1);
+    canvas.onmousedown = function (e) {
+        e = window.e || e;
+        rectX = e.pageX - this.offsetLeft;
+        rectY = e.pageY - this.offsetTop;
+    }
+    canvas.onmouseup = function (e) {
+        e = window.e || e;
+        var endX = e.pageX - this.offsetLeft;
+        var endY = e.pageY - this.offsetTop;
+        let a = endX - rectX;
+        let b = endY - rectY;
+        cxt.beginPath();
+        cxt.rect(rectX, rectY, a, b, endX, endY);
+        cxt.closePath();
+        cxt.fill();
+    }
+    cxt.onmouseout = null;
+    cxt.onmousemove = null;
 }
 //线宽按钮绑定
 function setLineWith(num) {
@@ -155,9 +273,13 @@ function setLineWith(num) {
     }
 }
 //颜色按钮绑定
-function setColor(obj,num) {
+function setColor(obj, num) {
     // alert(num);
     setStatus(colors, num, 0);
     cxt.strokeStyle = obj.id;
     cxt.fillStyle = obj.id;
 };
+//图像部分监听事件
+Clearimg.addEventListener("click", function () {
+    cxt.clearRect(0, 0, 880, 400)
+}, false)
