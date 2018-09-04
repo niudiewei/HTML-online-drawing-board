@@ -1,9 +1,16 @@
+ 
+/*                            
+ * 文件名称：style.css
+ * 作者：niudiewei
+ * 完成日期：2018年9月4日
+ * 版本号：v1.0
+*/
+
 /* 公共区域 */
 * {
     padding: 0;
     margin: 0;
     list-style: none;
-    /* border: 0; */
 }
 
 html,
